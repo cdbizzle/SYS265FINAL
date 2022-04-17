@@ -1,0 +1,49 @@
+@startuml
+!include <office/Servers/application_server>
+!include <office/Servers/database_server>
+
+
+
+nwdiag {
+title SYS265 Final Project Network Diagram | Milestone 2 | Team 6
+    internet [ shape = cloud ]
+    fw [address = "172.16.1.2", description = "pfSense firewall"]
+    internet -- fw
+    
+  network LAN-sys.local {
+    address = "172.16.1.x/24"
+    color = "yellow"
+    description = "This is the LAN that our network opperates on"
+    fw [address = "**.2**", description = "**fw** 172.16.1.2\npfSense firewall"]
+   
+   group adds {
+    color = "red"
+    description = "**AD DS**"
+    dc1 [address = "**.12**", description = "<$database_server>\ndc1\nWindows Server Core 2019"]
+    dc2 [address = "**.13**", description = "<$database_server>\ndc2\nWindows Server Core 2019"]  
+   }
+    
+   group services {
+    color = "green"
+    description = "**Services**"
+    docker [address = "**.5**", description = "<$application_server>\ndocker\nUbuntu 20.04"]
+    dhcp1 [address = "** .10**", description = "<$application_server>\ndhcp1\nCentOS 7"]
+    dhcp2 [address = "**.11**", description = "<$application_server>\ndhcp2\nCentOS 7"]
+    mgmt1 [address = "**.14**", description = "<$application_server>\nmgmt1\nWindows Server 2019"]
+    util [address = "**.15**", description = "<$application_server>\nutil\nCentOS 7"]
+    mgmt2 [address = "**.23**", description = "<$application_server>\nmgmt2\nUbuntu 20.04"]
+    dfs1 [address = "**.24**", description = "<$application_server>\ndfs1\nWindows Server Core 2019"]   
+    dfs2 [address = "**.25**", description = "<$application_server>\ndfs2\nWindows Server Core 2019"]
+    
+    
+    }
+    
+   group wks {
+    color = "pink"
+    description = "**Workstations**"
+    wks1 [address = "**.125**", description = "<$application_server>\nwks1 \nWindows 10"]
+    wks2 [address = "**.126**", description = "<$application_server>\nwks2\nWindows 10"]
+    
+    
+    }
+@endum1
