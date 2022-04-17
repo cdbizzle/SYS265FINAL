@@ -3,7 +3,6 @@
 !include <office/Servers/database_server>
 
 
-
 nwdiag {
 title SYS265 Final Project Network Diagram | Milestone 2 | Team 6
     internet [ shape = cloud ]
